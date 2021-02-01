@@ -24,7 +24,9 @@ class Home extends Component {
   };
 
   getBooks = () => {
-    // call the api.getBooks() and set it to state.
+    API.getBooks()
+    .then(res => this.setState({ savedBooks: res.data }))
+    .catch(err => console.log(err))
   };
 
   handleFormSubmit = event => {

@@ -17,7 +17,9 @@ class Saved extends Component {
   }
 
   getSavedBooks = () => {
-    //make the API.getSavedBooks() call
+    API.savedBooks()
+            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+            .catch(err => console.error(err));
   }
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());
